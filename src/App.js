@@ -33,23 +33,25 @@ export default function App() {
     getData();
   },[]);
 
-  if(loading) {
-    return(  <>
-    <section>
-      <h1>Loading...</h1>
-    </section>
-  </>)
-  } else {
-
-  return (
+  return(
     <>
+    {loading?
+    (
+    <div>
+      <h1>Loading...</h1>
+    </div>
+    )
+    :
+    (
+      <>
       <h1>Facts refresh on reload</h1>
       <div>
         <p>{fc.fact}</p>
         <button type='button' className='btn' onClick={()=> getData()}>Reload</button>
       </div>
-        </>
-          )
-
-  }
+      </>
+    )
+    }
+    </>
+  )
 }
